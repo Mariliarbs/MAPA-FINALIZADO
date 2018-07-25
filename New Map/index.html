@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parques de Orlando</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+
+    <div class='container'> 
+        
+        <div class="navbar">
+                <img src="img/malevola.png" id="show-btn" class="fa fa-bars" aria-hidden="true">
+                <h1 id="botao"> Hit me!</h1>
+          </div>
+        
+    <aside id="nav" class="sidebar">
+        
+         <div class='list'>
+             <span id="filtro" class="text">Filter Parks: </span>
+                <input type="text" placeholder="Orlando Parks" data-bind="textInput: filtroAtual">
+         </div>
+
+        
+        <hr>
+        <h2>Parks and Attractions</h2>
+        <hr>
+        
+        
+     <ul class="list-view" data-bind="foreach: search">
+        <li class="list-item" data-bind="click: $root.clickPark, text: title"></li>
+          <ul>
+            <li class="list-attraction" data-bind="text: attractionA"></li>
+            <li class="list-attraction" data-bind="text: attractionB"></li>
+            <li class="list-attraction" data-bind="text: attractionC"></li>
+          </ul>
+    </ul>      
+   </aside>     
+        
+        
+        
+<!--
+        <ul data-bind="foreach: locais">
+            <li>
+                <div>
+                   
+                  <a href="#" data-bind="click: clickPark"><span data-bind="text: park"> </span></a>
+                </div>
+                <ul data-bind="foreach: attraction">
+                    <li>
+                        <span data-bind="text: $data"> </span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+-->
+       
+    </div>
+
+
+    <div id='map'></div>
+    
+   <script src='js/lib/jquery-3.3.1.min.js'></script>
+    <script src='js/lib/knockout3.4.2.min.js'></script>    
+<!--    <script src="js/app.js"></script>-->
+    <script src="js/newapp.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyB10GWpCULTMQ5ifiYw1jojmFq4J76TLdY&v=3&callback=initMap" async defer onerror="mapError()">
+    </script>
+
+  </body>
+</html>

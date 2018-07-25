@@ -1,0 +1,127 @@
+html,
+body {
+  font-family: arial, sans-serif;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+   
+}
+
+#map {
+  width: 100%;
+  height: 92%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+   border: 5px solid black;
+
+}
+
+#filtro{
+    font-weight: bold;
+}
+
+.navbar {
+  display: flex;
+  width: 100%;
+  height: 7%;
+  top: 0;
+    background-color: #9933ff;
+    z-index: 0;
+}
+
+.sidebar {
+  background: #fff;
+  border: 5px solid black;
+  border-radius: 10px;
+  position: fixed;
+  line-height: 34px;
+  text-align: left;
+  height: 88%;
+  width: 17%;
+  z-index: 1;
+  overflow: auto;
+  background-color: #9933ff;
+}
+
+#show-btn {
+  display: inline-block;
+  left: 0;
+/*  margin-top: 1rem;*/
+  margin-left: 1rem;
+  padding: 5px 11px;
+  cursor: pointer;
+  width: 3%;
+  height: 3%;
+  z-index: 1;
+}
+
+.list-item{
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 18px;
+}
+
+.list-attraction{
+    font-size: 16px;
+    color: white;
+}
+
+#botao{
+    
+    color: white;
+    z-index: 1;
+    padding-top: 0.8%;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/*Query for gadgets between 1024px until 1400px width*/
+@media (min-width: 1024px) and (max-width: 1400px) {
+   .sidebar {
+      width: 30%;
+      height: 65%;
+      margin-top: 20px;
+  }
+ #show-btn {
+    margin-top: .8rem;
+    width: 5%;
+    height: 5%;
+  }
+}
+
+
+/*Query for ipdas between 601px until 768px width*/
+@media (min-width: 601px) and (max-width: 768px) {
+  .sidebar {
+      width: 35%;
+      height: 90%;
+      margin-top: 10px;
+  }
+ #show-btn {
+    margin-top: .8rem;
+    width: 5%;
+    height: 5%;
+  }    
+}
+
+/*Query for smartphones with max 600px width*/
+
+@media (max-width: 600px) {
+  /* Style the button */
+  #show-btn {
+    width: 10%;
+    height: 10%;
+  }
+  .sidebar {
+    width: 50%;
+  }
+
+   ul {
+    list-style: none;
+    padding-left: 8px;
+  }
+
+  }
