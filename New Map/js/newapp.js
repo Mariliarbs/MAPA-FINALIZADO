@@ -287,6 +287,7 @@ function viewModel() {
 
 }
 // End of ViewModel -------------------------------------- End of ViewModel -----------------------
+//correcao solicitada pela udacity
 mapError = function() {
     alert("MAP NO LOAD, TRY AGAIN");
 };
