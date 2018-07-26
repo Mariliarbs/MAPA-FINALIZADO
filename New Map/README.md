@@ -10,11 +10,10 @@ Navegar.
 ### OBJETIVO:
 
 Criar um mapa com 5 pontos de interesse que interajam com o usuário.
+No caso foi escolhido os 5 melhores parques de Orlando, para todos são indicados o numero de telefone,
+twitter, facebook, instagram, endereço e website.
 
 #### DOCUMENTAÇÃO:
 
 Foi utilizado o Google Maps API e o Foursquare API.
 De scripts foram utilizados o Knockout JS e o Jquery.
-
-
-
