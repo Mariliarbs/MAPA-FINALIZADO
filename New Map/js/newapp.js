@@ -89,7 +89,7 @@ var endereco;
 var instagram;
 function agenda(marker){
 
-//  console.log(marker.fsID);  
+//  console.log(marker.fsID);
 //    for (var i = 0; i < locations.length; i++) {
 //        var venueId = locations[i].fsID;
 //        console.log(venueId);
@@ -98,7 +98,7 @@ function agenda(marker){
  var id = "&client_id=VZKGEHW3VEZ5H4S1LLUSWPV5UFBBYD0KROIQ1ISFMZAKYKIP";
  var secret = "&client_secret=15BNMJCPGJ0QGEOAQCSWI2PFXC5JJSM3MCP1QMNWGXWOYEMU";
  var fsUrl = 'https://api.foursquare.com/v2/venues/' + marker.fsID + '?v=20180715&' + id + secret;
-    
+
    $.ajax(fsUrl).done(function(resultado) {
       telefone = resultado.response.venue.contact.formattedPhone;
 
@@ -107,7 +107,7 @@ function agenda(marker){
         twitter = resultado.response.venue.contact.twitter;
         facebook = resultado.response.venue.contact.facebookUsername;
         instagram = resultado.response.venue.contact.instagram;
-      console.log(telefone); 
+      console.log(telefone);
        //marker.fsID = telefone;
        marker.telefone = telefone;
 marker.website = website;
@@ -128,25 +128,25 @@ marker.endereco = endereco;
 
 function viewModel() {
     var self = this;
-    
+
     var infosWin = new google.maps.InfoWindow();
     var infoWindow;
     //self.titleMarker = [];
     //alert("teste");
-   
+
     //I store all my array locations in my new self.orlandoLocals, this will be a observableArray (ko)
     //Vou guardar toda a minha array locations em um novo chamado self.irlandoLocals, vai ser uma observableArray (ko).
-    
-     self.orlandoLocals = ko.observableArray(locations);
-    
 
-    
+     self.orlandoLocals = ko.observableArray(locations);
+
+
+
     //Add Markers and each marker will be your own image
     //Vamos adicionar os markers e cada um vai ter sua própria imagem.
-    
+
 
     // alert("teste");
-    
+
   for (var i = 0; i < locations.length; i++) {
         var position = locations[i].location;
         var title = locations[i].title;
@@ -168,9 +168,9 @@ function viewModel() {
         //console.log(title);
         //alert("teste"); Passed 5 times, its OK
         marker = new google.maps.Marker({
-        
+
             position: position,
-            map: map,   
+            map: map,
             title: title,
             icon: newIcon,
             address: address,
@@ -188,45 +188,45 @@ function viewModel() {
             facebook: facebook,
             endereco: endereco,
             animation: google.maps.Animation.DROP
-    }); 
+    });
 //alert("teste"); passed 5 times, loop is ok
       //call foursquare datas ------------------------------------- call foursquare --------------
-       agenda(marker); 
+       agenda(marker);
        locations[i].marker = marker;
         markers.push(marker);
         marker.addListener('click', function() {
             preencherInfo(this, infosWin);
             //infosWin.open(map, marker);
    });
-      
-      
-      
-          
- //Animation in each icon      
- //fonte: https://developers.google.com/maps/documentation/javascript/examples/marker-animations     
-      
+
+
+
+
+ //Animation in each icon
+ //fonte: https://developers.google.com/maps/documentation/javascript/examples/marker-animations
+
         marker.addListener('click', function(){
         var self = this;
         self.setAnimation(google.maps.Animation.BOUNCE);
         setTimeout(function() {
         self.setAnimation(null);
         }, 2000);
-	}); 
-     
+	});
+
 //     console.log(websiteA);
 //        self.openSite = function() {
-//     
+//
 //      window.location.href= marker.websiteA;
 //    };
-      
-  //function to click in park name and show in the map the location and infowindow    
+
+  //function to click in park name and show in the map the location and infowindow
   self.clickPark = function(teste) {
       //console.log(markers[0].title);
       //console.log(teste.title);
-          
+
        map.setZoom(13);
        map.panTo(teste.location);
-     
+
       if(teste.title == markers[0].title){
           google.maps.event.trigger(markers[0], 'click');
       }
@@ -242,30 +242,30 @@ function viewModel() {
       if(teste.title == markers[4].title){
           google.maps.event.trigger(markers[4], 'click');
       }
-         
-       
-    };  
+
+
+    };
     }
- //END OF FOR LOOP ------------------------------ END FOR LOOP ---------------------   
+ //END OF FOR LOOP ------------------------------ END FOR LOOP ---------------------
    // console.log(self.orlandoLocals());
 
     function preencherInfo(marker, infowindow) {
        // console.log(marker);
        // alert("teste");
     if (infowindow.marker != marker) {
-        
+
         infowindow.marker = marker;
        infowindow.setContent('<div><b>' + marker.title + '</b></div>' +'<div>' + '<b>' + "Address: " + '</b>' + marker.endereco + '</div>' + '<div>' + '<b>' + "Website: " + '</b>' + '<a href="' + marker.website + '" target="text"> ' + marker.title + '</a>' + '</div>' + '<div>' +'<b>' + "Telefone: " + '</b>' + marker.telefone + '</div>' + '<div>' + '<b>' + "Facebook: " + '</b>' + '<a href="https://www.facebook.com/' + marker.facebook + '" target="text"> ' + marker.facebook + '</a>' + '</div>'+ '<div>' + '<b>' + "Twitter: " + '</b>' + '<a href="https://www.twitter.com/' + marker.twitter + '" target="text"> ' + marker.twitter + '</a>'+ '</div>'+ '<div>' + '<b>' + "Instagram: " + '</b>' + '<a href="https://www.instagram.com/' + marker.instagram + '" target="text"> ' + marker.instagram + '</a>' + '</div>');
-       
+
         infowindow.addListener('closeclick', function() {
             infowindow.marker = null;
         });
     };
         infowindow.open(map, marker);
     };
-    
+
     //FILTER --------------------------------- FILTER LIST ----------------------
-    
+
     self.filtroAtual = ko.observable('');
     self.search = ko.computed(function() {
         return ko.utils.arrayFilter(locations, function(local) {
@@ -279,24 +279,28 @@ function viewModel() {
             }
         });
   });
-    
-    
-mapError = function() {
-    alert("MAP NO LOAD, TRY AGAIN");
-};      
+
+
+// mapError = function() {
+//     alert("MAP NO LOAD, TRY AGAIN");
+// };
 
 }
 // End of ViewModel -------------------------------------- End of ViewModel -----------------------
+mapError = function() {
+    alert("MAP NO LOAD, TRY AGAIN");
+};
+
 
 //Function initMap --------------------------------------------- function initMap-----------
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat:28.4034863, lng: -81.5843829}, 
+        center: {lat:28.4034863, lng: -81.5843829},
         zoom: 12,
-        
+
     });
-    
-  ko.applyBindings(new viewModel()); 
+
+  ko.applyBindings(new viewModel());
 }
 // end of initMap --------------------------------------- end of initMap --------------------
 
